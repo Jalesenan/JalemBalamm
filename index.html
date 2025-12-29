@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>💖 Jalə üçün Qəşəng Sevgi Mesajları 💖</title>
+<style>
+body {
+    background: linear-gradient(135deg, #ff9a9e, #ff758c);
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 80px;
+    color: #fff;
+    transition: background 1s ease;
+    overflow-x: hidden;
+}
+h1 {
+    font-size: 36px;
+    animation: glow 2s infinite alternate;
+}
+@keyframes glow {
+    from { text-shadow: 0 0 10px #fff; }
+    to { text-shadow: 0 0 30px #ffeb3b, 0 0 40px #ff4081; }
+}
+button {
+    background-color: #ff3b7f;
+    border: none;
+    padding: 15px 40px;
+    font-size: 24px;
+    border-radius: 15px;
+    cursor: pointer;
+    color: #fff;
+    margin-top: 50px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+button:hover { background-color: #ff1a66; }
+button:active { transform: scale(1.1); }
+#message {
+    font-size: 28px;
+    margin-top: 50px;
+    min-height: 80px;
+    transition: all 0.5s ease;
+}
+.flash {
+    animation: flash 0.4s ease;
+}
+@keyframes flash {
+    0% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.3); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    pointer-events: none;
+    animation: confettiFall 3s linear forwards;
+    border-radius: 50%;
+}
+@keyframes confettiFall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(700px) rotate(360deg); opacity: 0; }
+}
+</style>
+</head>
+<body>
+
+<h1>💖 Jalə üçün Qəşəng Sevgi Mesajları 💖</h1>
+<button onclick="showMessage()">Mesajı göstər</button>
+<div id="message"></div>
+
+<!-- Səs faylları -->
+<audio id="loveSound1" src="https://www.soundjay.com/buttons/sounds/button-3.mp3"></audio>
+<audio id="loveSound2" src="https://www.soundjay.com/button/beep-07.wav"></audio>
+<audio id="loveSound3" src="https://www.soundjay.com/button/sounds/button-09.mp3"></audio>
+
+<script>
+const messages = [
+    "✨ Jalə, sən mənim həyatımın ən şirin tərəfısən.",
+    "❤️ Dünyada hər şey dəyişə bilər, amma sənə olan sevgim yox, Jalə.",
+    "🌙 Gecələr adını düşünəndə içim isinirlər, Jalə.",
+    "💫 Sən gülümsəyəndə dünya gözəlləşir, Jalə.",
+    "💕 Hər günümün ən gözəl hissəsi səni düşünməkdir, Jalə.",
+    "🌸 Sən mənim qəlbimin işığısan, Jalə.",
+    "🌟 Sən varsan deyə hər şey gözəldir, Jalə.",
+    "💖 Hər an səni düşünməkdən xoşbəxtəm, Jalə.",
+    "💌 Sən mənim ən gözəl xəyallarımsan, Jalə.",
+    "✨ Gülüşün ruhumu isidir, Jalə.",
+    "🌈 Səninlə hər şey rəngli olur, Jalə.",
+    "💫 Hər klikdə səni daha çox sevirəm, Jalə.",
+    "💕 Sən mənim ən böyük şansımsan, Jalə.",
+    "🌙 Sən mənim gecələrimi işıqlandırırsan, Jalə.",
+    "💖 Sənin adını yazmaq belə xoşdur, Jalə.",
+    "🌟 Sən mənim hər günümün ən gözəl hissəsisən, Jalə.",
+    "💌 Sənə baxanda dünya dayanır, Jalə.",
+    "🌸 Səninlə hər an bir macəra, Jalə.",
+    "💫 Sənin varlığın mənim üçün ən böyük hədiyyədir, Jalə.",
+    "💕 Səni sevmək mənim həyatımı tamamlayır, Jalə."
+];
+
+const colors = ["#ff6f91", "#ffb3c6", "#ff8a80", "#ff4d6d", "#ff1a66"];
+
+function createConfetti() {
+    const confetti = document.createElement('div');
+    confetti.classList.add('confetti');
+    confetti.style.left = Math.random() * window.innerWidth + 'px';
+    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+    document.body.appendChild(confetti);
+    setTimeout(() => { confetti.remove(); }, 3000);
+}
+
+function showMessage() {
+    const index = Math.floor(Math.random() * messages.length);
+    const msgDiv = document.getElementById('message');
+    msgDiv.innerText = messages[index];
+    
+    msgDiv.classList.remove("flash");
+    void msgDiv.offsetWidth;
+    msgDiv.classList.add("flash");
+    
+    const bgIndex = Math.floor(Math.random() * colors.length);
+    document.body.style.background = `linear-gradient(135deg, ${colors[bgIndex]}, #ff758c)`;
+    
+    // Fərqli səs seç
+    const sound = document.getElementById(`loveSound${Math.ceil(Math.random()*3)}`);
+    sound.play();
+    
+    // Confetti
+    for(let i=0;i<25;i++) createConfetti();
+}
+</script>
+
+</body>
+</html>
